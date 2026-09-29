@@ -1,5 +1,6 @@
 import argparse
 import json
+import math
 import time
 from pathlib import Path
 
@@ -345,6 +346,13 @@ class LeftHandSafeFingerRatioNode(Node):
         if len(msg.data) < 4:
             self.get_logger().warn(
                 "finger ratio message must have 4 values: [thumb, index, middle, ring]"
+            )
+            return
+
+        # clamp(NaN) returns 1.0 (full fist), so reject non-finite values first.
+        if not all(math.isfinite(value) for value in msg.data[:4]):
+            self.get_logger().warn(
+                f"finger ratio message has NaN/Inf: {list(msg.data[:4])}. command ignored."
             )
             return
 

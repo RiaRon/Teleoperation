@@ -1,0 +1,170 @@
+{
+  "hand": "right",
+  "hardware": "LEAP Hand V1",
+  "config_kind": "synthetic_test",
+  "note": "SYNTHETIC TEST VALUES. close_pose_deg is made up for unit tests and dry-run demos only; it is not a measurement of any hand. Hardware mode refuses config_kind != hardware.",
+  "port": "/dev/null-synthetic",
+  "baudrate": 57600,
+  "protocol_version": 2.0,
+  "finger_ids": {
+    "thumb": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "index": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "middle": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "ring": [
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "joint_names": {
+    "0": "index_mcp_side",
+    "1": "index_mcp_forward",
+    "2": "index_pip",
+    "3": "index_dip",
+    "4": "middle_mcp_side",
+    "5": "middle_mcp_forward",
+    "6": "middle_pip",
+    "7": "middle_dip",
+    "8": "ring_mcp_side",
+    "9": "ring_mcp_forward",
+    "10": "ring_pip",
+    "11": "ring_dip",
+    "12": "thumb_mcp_side",
+    "13": "thumb_mcp_forward",
+    "14": "thumb_pip",
+    "15": "thumb_dip"
+  },
+  "open_pose_deg": {
+    "0": 180.0,
+    "1": 180.0,
+    "2": 180.0,
+    "3": 180.0,
+    "4": 180.0,
+    "5": 180.0,
+    "6": 180.0,
+    "7": 180.0,
+    "8": 180.0,
+    "9": 180.0,
+    "10": 180.0,
+    "11": 180.0,
+    "12": 180.0,
+    "13": 180.0,
+    "14": 180.0,
+    "15": 180.0
+  },
+  "close_pose_deg": {
+    "0": 180.0,
+    "1": 250.0,
+    "2": 250.0,
+    "3": 240.0,
+    "4": 180.0,
+    "5": 250.0,
+    "6": 250.0,
+    "7": 240.0,
+    "8": 180.0,
+    "9": 250.0,
+    "10": 250.0,
+    "11": 240.0,
+    "12": 230.0,
+    "13": 250.0,
+    "14": 230.0,
+    "15": 230.0
+  },
+  "limits_deg": {
+    "0": [
+      120.01,
+      239.99
+    ],
+    "1": [
+      162.01,
+      307.77
+    ],
+    "2": [
+      151.01,
+      288.0
+    ],
+    "3": [
+      159.03,
+      297.0
+    ],
+    "4": [
+      120.01,
+      239.99
+    ],
+    "5": [
+      162.01,
+      307.77
+    ],
+    "6": [
+      151.01,
+      288.0
+    ],
+    "7": [
+      159.03,
+      297.0
+    ],
+    "8": [
+      120.01,
+      239.99
+    ],
+    "9": [
+      162.01,
+      307.77
+    ],
+    "10": [
+      151.01,
+      288.0
+    ],
+    "11": [
+      159.03,
+      297.0
+    ],
+    "12": [
+      160.0,
+      299.98
+    ],
+    "13": [
+      153.07,
+      319.97
+    ],
+    "14": [
+      111.25,
+      288.86
+    ],
+    "15": [
+      103.22,
+      287.72
+    ]
+  },
+  "profile_velocity": 8,
+  "allowed_operating_modes": [
+    3,
+    5
+  ],
+  "arm_position_tolerance_deg": 5.0,
+  "hardware_verified": {
+    "port": true,
+    "baudrate": true,
+    "motor_ids": true,
+    "open_pose": true,
+    "close_pose": true,
+    "direction": true,
+    "limits": true
+  }
+}

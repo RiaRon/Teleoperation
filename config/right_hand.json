@@ -1,0 +1,71 @@
+{
+  "hand": "right",
+  "hardware": "LEAP Hand V1",
+  "config_kind": "hardware",
+  "note": "null = TBD. Values from official LEAP Hand V1 sources are documented references, not measurements of this lab's unit. The lab LEFT hand does not follow the official ID layout (thumb 0-3, 57600 baud), so every hardware_verified flag must be set true by a person after checking the real right hand. Hardware mode refuses to start while anything is null or unverified.",
+
+  "port": null,
+  "baudrate": null,
+  "protocol_version": 2.0,
+
+  "finger_ids": {
+    "thumb": [12, 13, 14, 15],
+    "index": [0, 1, 2, 3],
+    "middle": [4, 5, 6, 7],
+    "ring": [8, 9, 10, 11]
+  },
+
+  "joint_names": {
+    "0": "index_mcp_side", "1": "index_mcp_forward", "2": "index_pip", "3": "index_dip",
+    "4": "middle_mcp_side", "5": "middle_mcp_forward", "6": "middle_pip", "7": "middle_dip",
+    "8": "ring_mcp_side", "9": "ring_mcp_forward", "10": "ring_pip", "11": "ring_dip",
+    "12": "thumb_mcp_side", "13": "thumb_mcp_forward", "14": "thumb_pip", "15": "thumb_dip"
+  },
+
+  "open_pose_deg": {
+    "0": 180.0, "1": 180.0, "2": 180.0, "3": 180.0,
+    "4": 180.0, "5": 180.0, "6": 180.0, "7": 180.0,
+    "8": 180.0, "9": 180.0, "10": 180.0, "11": 180.0,
+    "12": 180.0, "13": 180.0, "14": 180.0, "15": 180.0
+  },
+
+  "close_pose_deg": {
+    "0": null, "1": null, "2": null, "3": null,
+    "4": null, "5": null, "6": null, "7": null,
+    "8": null, "9": null, "10": null, "11": null,
+    "12": null, "13": null, "14": null, "15": null
+  },
+
+  "limits_deg": {
+    "0": [120.01, 239.99], "1": [162.01, 307.77], "2": [151.01, 288.0], "3": [159.03, 297.0],
+    "4": [120.01, 239.99], "5": [162.01, 307.77], "6": [151.01, 288.0], "7": [159.03, 297.0],
+    "8": [120.01, 239.99], "9": [162.01, 307.77], "10": [151.01, 288.0], "11": [159.03, 297.0],
+    "12": [160.0, 299.98], "13": [153.07, 319.97], "14": [111.25, 288.86], "15": [103.22, 287.72]
+  },
+
+  "profile_velocity": 8,
+  "allowed_operating_modes": [3, 5],
+  "arm_position_tolerance_deg": 5.0,
+
+  "hardware_verified": {
+    "port": false,
+    "baudrate": false,
+    "motor_ids": false,
+    "open_pose": false,
+    "close_pose": false,
+    "direction": false,
+    "limits": false
+  },
+
+  "evidence": {
+    "motor_ids": "Official V1 ID table: Index 0-3, Middle 4-7, Ring 8-11, Thumb 12-15; per finger MCP side, MCP forward, PIP, DIP. https://v1.leaphand.com/assembly and LEAP_Hand_API python/main.py (commit b0d00c8). Right hand is the default V1 build; left differs only in thumb assembly and palm (assembly page).",
+    "open_pose": "Official V1 home pose: 180 deg (3.14159 rad) for every joint, horns are mounted at this pose (assembly page; leap_hand_utils.allegro_to_LEAPhand(zeros)).",
+    "close_pose": "TBD. No official close pose exists. Record on the real right hand with torque OFF (right_hand_hw_check.py --record close).",
+    "direction": "Official convention: a positive angle closes the joints; MCP side is centered at 180 and moves both ways (python/main.py header). Per-motor direction used by the controller comes from open -> close in this file, so it is only as good as the recorded close pose.",
+    "limits": "Official V1 LEAPsim_limits + 3.14159 rad (leap_hand_utils.py, used by angle_safety_clip), identical to the joint limits in LEAP_Hand_Sim assets/leap_hand/robot.urdf.",
+    "baudrate": "TBD. Official API opens 4000000; the lab left hand uses 57600. Check with a ping scan.",
+    "port": "TBD. Use /dev/serial/by-id/... of the right hand U2D2 (official README recommends by-id).",
+    "profile_velocity": "Operational value from start_left_hand_camera_safe_system.sh (--profile-velocity 8), not a hardware property.",
+    "allowed_operating_modes": "3 = position, 5 = current-based position (official API sets 5). Goal Position is only meaningful in these modes."
+  }
+}
