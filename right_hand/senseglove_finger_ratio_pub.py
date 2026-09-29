@@ -20,7 +20,7 @@ from senseglove_finger_ratio import (
 
 
 INPUT_TOPIC = "/senseglove/glove00782/rh/joint_states"
-OUTPUT_TOPIC = "/left_hand/finger_ratios"
+OUTPUT_TOPIC = "/right_hand/finger_ratios"
 
 
 def format_ratios(ratios):

@@ -12,7 +12,7 @@
 
 MODE="${1:-dryrun}"
 
-PROJECT_DIR="$HOME/left_hand_project"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG="${CONFIG:-config/right_hand.json}"
 MAX_RATIO="0.5"
 MAX_STEP="0.05"

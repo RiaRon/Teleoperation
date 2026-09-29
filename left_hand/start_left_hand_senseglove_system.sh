@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SenseGlove version of start_left_hand_camera_safe_system.sh for ROS 2 Jazzy.
+# Left Nova 2 (#00795) -> LEFT LEAP Hand, ROS 2 Jazzy (SenseGlove version of start_left_hand_camera_safe_system.sh).
 #
 #   ./start_left_hand_senseglove_system.sh           dryrun : ratio node logs only, no publish, no motors
 #   ./start_left_hand_senseglove_system.sh preview   preview: publish ratios + RViz model, no motors
@@ -9,12 +9,12 @@
 
 MODE="${1:-dryrun}"
 
-PROJECT_DIR="$HOME/left_hand_project"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PORT="${PORT:-/dev/ttyUSB0}"
 PROFILE_VELOCITY="8"
 MAX_RATIO="0.5"
 MAX_STEP="0.05"
-GLOVE_TOPIC="/senseglove/glove00782/rh/joint_states"
+GLOVE_TOPIC="/senseglove/glove00795/lh/joint_states"
 CALIBRATION="senseglove_calibration.json"
 ROS_SETUP="/opt/ros/jazzy/setup.bash"
 

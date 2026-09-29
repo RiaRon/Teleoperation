@@ -18,6 +18,7 @@ from sensor_msgs.msg import JointState
 
 
 OUTPUT_TOPIC = "/senseglove/glove00782/rh/joint_states"
+JOINT_PREFIX = "r_"
 FIXTURE = Path(__file__).parent / "tests" / "fixtures" / "senseglove_poses.json"
 
 FINGERS = ["thumb", "index", "middle", "ring"]
@@ -29,7 +30,7 @@ def load_poses(path=FIXTURE):
         return json.load(f)["poses"]
 
 
-def pose_to_joint_map(pose, prefix="r_"):
+def pose_to_joint_map(pose, prefix=JOINT_PREFIX):
     joints = {}
 
     for finger in FINGERS:

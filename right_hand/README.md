@@ -2,18 +2,18 @@
 
 ```
 Right Nova 2 (#00782) → /senseglove/glove00782/rh/joint_states
-  → senseglove_finger_ratio_pub.py --publish --output-topic /right_hand/finger_ratios   (기존 파일, 수정 없음)
+  → senseglove_finger_ratio_pub.py --publish   (기본 출력 /right_hand/finger_ratios, SENSEGLOVE_INPUT.md)
   → right_hand_finger_ratio_controller.py  ◄── /right_hand/arm (std_msgs/Bool)
   → right_hand_dynamixel_bus.py (hardware 모드만) → Right LEAP Hand V1
 ```
 
-왼손 시스템(`left_hand_*`, `/left_hand/*`, `LEAP-Left-*`)은 한 글자도 바꾸지 않았다.
+왼손 시스템은 `../left_hand/`에 따로 있다(`/left_hand/*`, 왼손 장갑 #00795). 이 폴더는 오른손 장갑과 오른손 LEAP만 다룬다.
 controller는 센서 종류를 모른다. `[thumb, index, middle, ring]` 0~1 ratio만 받는다.
 
 **현재 상태: dry-run까지 완료. 실물 구동은 막혀 있다.** `config/right_hand.json`의 close 자세, port, baudrate가
 TBD이고 `hardware_verified`가 모두 false라서, hardware 모드는 포트를 열기 전에 종료한다.
 
-## 1. 기존 LEFT controller 분석 (`left_hand_finger_ratio_node_safe.py`)
+## 1. 기존 LEFT controller 분석 (`../left_hand/left_hand_finger_ratio_node_safe.py`)
 
 | 항목 | 내용 |
 |---|---|
@@ -61,7 +61,7 @@ V2/V2 Advanced 자료는 쓰지 않았다(LEAP_Hand_API 설명: "API for control
 | `right_hand_torque_off.py` | controller가 없을 때 직접 torque OFF (Disarm 스크립트의 대체 경로) |
 | `LEAP-Right-Arm-Jazzy.sh`, `LEAP-Right-Disarm-Jazzy.sh` | `/right_hand/arm` ARM / DISARM. Disarm은 controller가 없으면 직접 torque OFF 시도 |
 | `start_right_hand_senseglove_system.sh` | `dryrun`(기본) / `preview` / `hand` |
-| `tests/test_right_hand_controller.py`, `tests/test_right_hand_integration.py` | 오른손 테스트 57개 |
+| `tests/test_right_hand_controller.py`, `tests/test_right_hand_integration.py` | 오른손 테스트 57개 (좌우 분리 확인 3개는 `../left_hand/`가 없으면 skip) |
 | `tests/fixtures/right_hand_synthetic_test.json` | **합성 테스트 전용** 설정(`config_kind: synthetic_test`, close 값은 임의). hardware 모드가 거부함 |
 
 ## 4. LEFT / RIGHT 차이
@@ -99,7 +99,7 @@ V2/V2 Advanced 자료는 쓰지 않았다(LEAP_Hand_API 설명: "API for control
 ## 6. TBD 채우기 (다음 단계, 실물 필요)
 
 ```bash
-source /opt/ros/jazzy/setup.bash && cd ~/left_hand_project
+source /opt/ros/jazzy/setup.bash && cd ~/Teleoperation/right_hand
 ls /dev/serial/by-id/                                    # 오른손 U2D2 확인
 python3 right_hand_hw_check.py --port /dev/serial/by-id/<오른손> --baudrates 57600,4000000
 # torque OFF 상태에서 손을 펴고 / 쥔 채로:

@@ -1,0 +1,29 @@
+{
+  "note": "Single snapshots from Nova 2 right hand #00782 on 2026-09-21 (Notion TELEOPERATION log). Test fixtures only; not calibration values. Values are MCP/PIP/DIP in rad.",
+  "poses": {
+    "open": {
+      "thumb": [-0.611, 0.000, -0.092],
+      "index": [-0.166, 0.070, 0.063],
+      "middle": [0.029, 0.043, 0.039],
+      "ring": [0.202, 0.375, 0.338]
+    },
+    "fist": {
+      "thumb": [-0.300, 0.522, 1.174],
+      "index": [0.982, 1.745, 1.571],
+      "middle": [1.571, 1.745, 1.571],
+      "ring": [1.571, 1.745, 1.571]
+    },
+    "index_bend": {
+      "thumb": [-0.611, 0.000, -0.006],
+      "index": [0.861, 1.428, 1.285],
+      "middle": [0.434, 0.795, 0.716],
+      "ring": [0.428, 0.783, 0.705]
+    },
+    "pinch": {
+      "thumb": [-0.276, 0.316, 0.710],
+      "index": [0.727, 0.989, 0.891],
+      "middle": [0.428, 0.575, 0.517],
+      "ring": [0.443, 0.594, 0.535]
+    }
+  }
+}

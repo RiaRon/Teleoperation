@@ -1,0 +1,40 @@
+{
+  "source": "anatomical_default",
+  "note": "Uncalibrated fallback. open = straight joint (0 rad), closed = SenseGlove SDK v22 Anatomy flexion limit (left hand; identical to the right-hand flexion limits). Thumb mcp/pip/dip on the glove are CMC/MCP/IP flexion; thumb mcp open uses the SDK CMC flexion minimum. Record a user calibration with senseglove_record_calibration.py before real use.",
+  "joint_prefix": "l_",
+  "max_abs_joint_rad": 3.1416,
+  "fingers": {
+    "thumb": {
+      "joints": {
+        "mcp": {"open": -1.1345, "closed": 0.4363},
+        "pip": {"open": 0.0, "closed": 1.3963},
+        "dip": {"open": 0.0, "closed": 1.5708}
+      },
+      "weights": {"mcp": 1.0, "pip": 1.0, "dip": 1.0}
+    },
+    "index": {
+      "joints": {
+        "mcp": {"open": 0.0, "closed": 1.5708},
+        "pip": {"open": 0.0, "closed": 1.7453},
+        "dip": {"open": 0.0, "closed": 1.5708}
+      },
+      "weights": {"mcp": 1.0, "pip": 1.0, "dip": 1.0}
+    },
+    "middle": {
+      "joints": {
+        "mcp": {"open": 0.0, "closed": 1.5708},
+        "pip": {"open": 0.0, "closed": 1.7453},
+        "dip": {"open": 0.0, "closed": 1.5708}
+      },
+      "weights": {"mcp": 1.0, "pip": 1.0, "dip": 1.0}
+    },
+    "ring": {
+      "joints": {
+        "mcp": {"open": 0.0, "closed": 1.5708},
+        "pip": {"open": 0.0, "closed": 1.7453},
+        "dip": {"open": 0.0, "closed": 1.5708}
+      },
+      "weights": {"mcp": 1.0, "pip": 1.0, "dip": 1.0}
+    }
+  }
+}

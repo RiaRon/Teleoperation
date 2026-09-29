@@ -29,7 +29,10 @@ from right_hand_controller_core import (
 ROOT = Path(__file__).resolve().parent.parent
 REAL_CONFIG = ROOT / "config" / "right_hand.json"
 SYNTHETIC_CONFIG = ROOT / "tests" / "fixtures" / "right_hand_synthetic_test.json"
-LEFT_MAP = ROOT / "left_hand_motor_map.json"
+# The left system lives in the sibling folder; separation tests skip without it.
+LEFT_DIR = ROOT.parent / "left_hand"
+LEFT_MAP = LEFT_DIR / "left_hand_motor_map.json"
+needs_left = pytest.mark.skipif(not LEFT_MAP.exists(), reason="../left_hand not present")
 
 OPEN = 0.0
 CLOSED = 1.0
@@ -186,11 +189,13 @@ def test_right_mapping_follows_official_v1_table():
 
 # 10. left/right separation ---------------------------------------------------------------
 
+@needs_left
 def test_left_motor_map_is_rejected_by_right_loader():
     with pytest.raises(InvalidConfig, match="hand must be 'right'"):
         load_hand_config(LEFT_MAP)
 
 
+@needs_left
 def test_right_config_does_not_copy_left_values():
     right = json.loads(REAL_CONFIG.read_text())
     left = json.loads(LEFT_MAP.read_text())
@@ -201,9 +206,10 @@ def test_right_config_does_not_copy_left_values():
     assert right["baudrate"] is None
 
 
+@needs_left
 def test_right_and_left_topics_are_separate():
     import right_hand_finger_ratio_controller as right
-    source = (ROOT / "left_hand_finger_ratio_node_safe.py").read_text()
+    source = (LEFT_DIR / "left_hand_finger_ratio_node_safe.py").read_text()
 
     assert right.FINGER_TOPIC == "/right_hand/finger_ratios"
     assert right.ARM_TOPIC == "/right_hand/arm"
